@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
+import { Link } from 'react-router-dom'
+import { Pizza } from 'lucide-react'
 
 const signInForm = z.object({
   email: z.string().email(),
@@ -32,7 +34,13 @@ export function SignIn() {
     <>
       <Helmet title="Login" />
       <div className="p-8">
-        <div className="flex w-[350px] flex-col justify-center gap-6">
+        <Button asChild className="absolute right-8 top-8" variant="ghost">
+          <Link to="/sign-up">Criar conta</Link>
+        </Button>
+        <div className="flex w-[350px] flex-col  gap-6">
+          <div className="flex items-center justify-center">
+            <Pizza className="h-10 w-10" />
+          </div>
           <div className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
               Acessar painel

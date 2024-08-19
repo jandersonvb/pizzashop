@@ -1,13 +1,13 @@
+import { Pizza } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { toast } from 'sonner'
-import { Link } from 'react-router-dom'
-import { Pizza } from 'lucide-react'
 
 const signInForm = z.object({
   email: z.string().email(),
@@ -37,7 +37,7 @@ export function SignIn() {
         <Button asChild className="absolute right-8 top-8" variant="ghost">
           <Link to="/sign-up">Criar conta</Link>
         </Button>
-        <div className="flex w-[350px] flex-col  gap-6">
+        <div className="flex w-[350px] flex-col gap-6">
           <div className="flex items-center justify-center">
             <Pizza className="h-10 w-10" />
           </div>

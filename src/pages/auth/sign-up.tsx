@@ -1,13 +1,13 @@
+import { Pizza } from 'lucide-react'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'sonner'
 import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Link, useNavigate } from 'react-router-dom'
-import { Pizza } from 'lucide-react'
-import { toast } from 'sonner'
 
 const signUpForm = z.object({
   restaurantName: z.string().min(3),
@@ -35,9 +35,8 @@ export function SignUp() {
         action: {
           label: 'Login',
           onClick: () => navigate('/sign-in'),
-        }
+        },
       })
-
     } catch (error) {
       toast.error('Erro ao cadastrar restaurante')
     }
@@ -108,7 +107,7 @@ export function SignUp() {
             </Button>
 
             <p className="px-6 text-center text-sm leading-relaxed text-muted-foreground">
-              Ao clicar em "Finalizar cadastro", você concorda com nossos{' '}
+              Ao clicar em 'Finalizar cadastro', você concorda com nossos{' '}
               <Link to="" className="underline underline-offset-4">
                 Termos de serviços
               </Link>{' '}

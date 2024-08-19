@@ -10,7 +10,7 @@ import { Orders } from './pages/app/orders/orders'
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <AppLayout />,
+    element: <AppLayout />, // This layout is used for user authenticated routes
     children: [
       { path: '/', element: <Dashboard /> },
       { path: '/orders', element: <Orders /> }
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <AuthLayout />,
+    element: <AuthLayout />, // This layout is used for user don't authenticated routes
     children: [
       { path: '/sign-in', element: <SignIn /> },
       { path: '/sign-up', element: <SignUp /> },

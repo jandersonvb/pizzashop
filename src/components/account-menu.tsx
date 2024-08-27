@@ -21,12 +21,14 @@ export function AccountMenu() {
   const { data: profile, isLoading: isLoadingProfile } = useQuery({
     queryKey: ['profile'], // This is the key that will be used to cache the data
     queryFn: getProfile,
+    staleTime: Infinity, // This will make the data never expire
   })
 
   const { data: managedRestaurant, isLoading: isLoadingManagedRestaurant } =
     useQuery({
       queryKey: ['managed-restaurant'],
       queryFn: getManagedRestaurant,
+      staleTime: Infinity, // This will make the data never expire
     })
 
   return (

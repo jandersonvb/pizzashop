@@ -19,6 +19,10 @@ import { z } from 'zod'
 export function Orders() {
   const [searchParams, setSearchParams] = useSearchParams()
 
+  const orderId = searchParams.get('orderId')
+  const customerName = searchParams.get('customerName')
+  const status = searchParams.get('status')
+
   // Parse the page query parameter
   const pageIndex = z.coerce.number()
     .transform(page => page - 1)
@@ -26,8 +30,8 @@ export function Orders() {
 
   // Fetch orders
   const { data: result } = useQuery({
-    queryKey: ['orders', pageIndex], // Use the page index as part of the query key
-    queryFn: () => getOrders({ pageIndex }),
+    queryKey: ['orders', pageIndex, orderId, customerName, status], // Use the page index as part of the query key
+    queryFn: () => getOrders({ pageIndex, orderId, customerName, status: status === 'all' ? null : status }),
   })
 
   // Handle pagination
@@ -45,7 +49,6 @@ export function Orders() {
         <h1 className="text-3xl font-bold tracking-tight">Pedidos</h1>
         <div className="space-y-2.5">
           <OrderTableFilters />
-
           <div className="rounded-md border">
             <Table>
               <TableHeader>

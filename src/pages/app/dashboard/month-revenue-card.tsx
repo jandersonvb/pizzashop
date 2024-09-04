@@ -1,8 +1,8 @@
+import { useQuery } from '@tanstack/react-query'
 import { DollarSign } from 'lucide-react'
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useQuery } from '@tanstack/react-query'
 import { getMonthRevenue } from '@/api/get-month-revenue'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export function MonthRevenueCard() {
   const { data: monthRevenue } = useQuery({
@@ -30,13 +30,17 @@ export function MonthRevenueCard() {
             <p className="text-xs text-muted-foreground">
               {monthRevenue.diffFromLastMonth >= 0 ? (
                 <>
-                  <span className="text-emerald-500 dark:text-emerald-400">+{monthRevenue.diffFromLastMonth}%</span> em
-                  relação a ontem
+                  <span className="text-emerald-500 dark:text-emerald-400">
+                    +{monthRevenue.diffFromLastMonth}%
+                  </span>{' '}
+                  em relação a ontem
                 </>
               ) : (
                 <>
-                  <span className="text-rose-500 dark:text-rose-400">{monthRevenue.diffFromLastMonth}</span> em
-                  relação a ontem
+                  <span className="text-rose-500 dark:text-rose-400">
+                    {monthRevenue.diffFromLastMonth}
+                  </span>{' '}
+                  em relação a ontem
                 </>
               )}
             </p>

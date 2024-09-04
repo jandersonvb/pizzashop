@@ -1,3 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+
 import { getOrdersDetails } from '@/api/get-order-detail'
 import { OrderStatus } from '@/components/order-status'
 import {
@@ -15,10 +19,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { useQuery } from '@tanstack/react-query'
-import { formatDistanceToNow } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
-
 
 export interface OrderDetailsProps {
   orderId: string
@@ -31,8 +31,6 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
     queryFn: () => getOrdersDetails({ orderId }),
     enabled: open,
   })
-
-
 
   return (
     <DialogContent>
@@ -58,7 +56,9 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell className="text-muted-foreground">Telefone</TableCell>
+                <TableCell className="text-muted-foreground">
+                  Telefone
+                </TableCell>
                 <TableCell className="flex justify-end">
                   {order.customer.phone ?? 'Não informado'}
                 </TableCell>
@@ -76,7 +76,7 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                 <TableCell className="flex justify-end">
                   {formatDistanceToNow(new Date(order.createdAt), {
                     locale: ptBR,
-                    addSuffix: true
+                    addSuffix: true,
                   })}
                 </TableCell>
               </TableRow>
@@ -93,11 +93,13 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {order.orderItems.map(item => {
+              {order.orderItems.map((item) => {
                 return (
                   <TableRow key={item.id}>
                     <TableCell>{item.product.name}</TableCell>
-                    <TableCell className="text-right">{item.quantity}</TableCell>
+                    <TableCell className="text-right">
+                      {item.quantity}
+                    </TableCell>
                     <TableCell className="text-right">
                       {(item.priceInCents / 100).toLocaleString('pt-BR', {
                         style: 'currency',
@@ -105,17 +107,17 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                       })}
                     </TableCell>
                     <TableCell className="text-right">
-                      {((item.priceInCents * item.quantity) / 100).toLocaleString('pt-BR', {
+                      {(
+                        (item.priceInCents * item.quantity) /
+                        100
+                      ).toLocaleString('pt-BR', {
                         style: 'currency',
                         currency: 'BRL',
-                      })
-                      }
+                      })}
                     </TableCell>
                   </TableRow>
-
                 )
               })}
-
             </TableBody>
 
             <TableFooter>
@@ -127,17 +129,13 @@ export function OrderDetails({ orderId, open }: OrderDetailsProps) {
                   {(order.totalInCents / 100).toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
-                  })
-                  }
+                  })}
                 </TableCell>
               </TableRow>
             </TableFooter>
           </Table>
         </div>
-
       )}
-
-
     </DialogContent>
   )
 }

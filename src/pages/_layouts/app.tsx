@@ -1,9 +1,9 @@
+import { isAxiosError } from 'axios'
+import { useEffect } from 'react'
 import { Outlet, useNavigate } from 'react-router-dom'
 
 import { Header } from '@/components/header'
-import { useEffect } from 'react'
 import { api } from '@/lib/axios'
-import { isAxiosError } from 'axios'
 
 export function AppLayout() {
   const navigate = useNavigate()
@@ -20,7 +20,7 @@ export function AppLayout() {
             navigate('/sign-in', { replace: true })
           }
         }
-      }
+      },
     )
 
     return () => {

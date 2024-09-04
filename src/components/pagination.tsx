@@ -11,7 +11,7 @@ interface PaginationProps {
   pageIndex: number // Page Actual
   perPage: number // Number of registers per page
   totalCount: number // Total of registers
-  onPageChange: (pageIndex: number) => Promise<void> | void// Function to change page
+  onPageChange: (pageIndex: number) => Promise<void> | void // Function to change page
 }
 
 export function Pagination({

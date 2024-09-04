@@ -1,5 +1,9 @@
+import { useQuery } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
+import { useSearchParams } from 'react-router-dom'
+import { z } from 'zod'
 
+import { getOrders } from '@/api/get-orders'
 import { Pagination } from '@/components/pagination'
 import {
   Table,
@@ -10,11 +14,7 @@ import {
 } from '@/components/ui/table'
 
 import { OrderTableFilters } from './order-table-filters'
-import { useQuery } from '@tanstack/react-query'
-import { getOrders } from '@/api/get-orders'
 import { OrderTableRow } from './order-table-row'
-import { useSearchParams } from 'react-router-dom'
-import { z } from 'zod'
 
 export function Orders() {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -24,19 +24,26 @@ export function Orders() {
   const status = searchParams.get('status')
 
   // Parse the page query parameter
-  const pageIndex = z.coerce.number()
-    .transform(page => page - 1)
+  const pageIndex = z.coerce
+    .number()
+    .transform((page) => page - 1)
     .parse(searchParams.get('page') ?? '1')
 
   // Fetch orders
   const { data: result } = useQuery({
     queryKey: ['orders', pageIndex, orderId, customerName, status], // Use the page index as part of the query key
-    queryFn: () => getOrders({ pageIndex, orderId, customerName, status: status === 'all' ? null : status }),
+    queryFn: () =>
+      getOrders({
+        pageIndex,
+        orderId,
+        customerName,
+        status: status === 'all' ? null : status,
+      }),
   })
 
   // Handle pagination
   function handlePaginate(pageIndex: number) {
-    setSearchParams(state => {
+    setSearchParams((state) => {
       state.set('page', (pageIndex + 1).toString())
       return state
     })
@@ -65,9 +72,10 @@ export function Orders() {
               </TableHeader>
 
               <TableBody>
-                {result && result.orders.map(order => {
-                  return <OrderTableRow key={order.orderId} order={order} />
-                })}
+                {result &&
+                  result.orders.map((order) => {
+                    return <OrderTableRow key={order.orderId} order={order} />
+                  })}
               </TableBody>
             </Table>
           </div>
@@ -78,8 +86,7 @@ export function Orders() {
               perPage={result.meta.perPage}
               onPageChange={handlePaginate}
             />
-          )
-          }
+          )}
         </div>
       </div>
     </>

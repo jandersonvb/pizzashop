@@ -7,12 +7,13 @@ import { Dashboard } from './pages/app/dashboard/dashboard'
 import { Orders } from './pages/app/orders/orders'
 import { SignIn } from './pages/auth/sign-in'
 import { SignUp } from './pages/auth/sign-up'
+import { Error } from './pages/error'
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <AppLayout />, // This layout is used for user authenticated routes
-    errorElement: <NotFound />, // This is the 404 page
+    errorElement: <Error />, // This is the 404 page
     children: [
       { path: '/', element: <Dashboard /> },
       { path: '/orders', element: <Orders /> },
@@ -26,4 +27,8 @@ export const router = createBrowserRouter([
       { path: '/sign-up', element: <SignUp /> },
     ],
   },
+  {
+    path: '*',
+    element: <NotFound />,
+  }
 ])

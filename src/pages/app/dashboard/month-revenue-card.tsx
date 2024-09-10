@@ -3,6 +3,7 @@ import { DollarSign } from 'lucide-react'
 
 import { getMonthRevenue } from '@/api/get-month-revenue'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+
 import { MetricCardSkeleton } from './metric-card-skeleton'
 
 export function MonthRevenueCard() {

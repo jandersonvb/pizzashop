@@ -1,5 +1,13 @@
-import { Skeleton } from "@/components/ui/skeleton"
-import { Table, TableBody, TableCell, TableFooter, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { Skeleton } from '@/components/ui/skeleton'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 
 export function OrderDetailsSkeleton() {
   return (
@@ -21,9 +29,7 @@ export function OrderDetailsSkeleton() {
           </TableRow>
 
           <TableRow>
-            <TableCell className="text-muted-foreground">
-              Telefone
-            </TableCell>
+            <TableCell className="text-muted-foreground">Telefone</TableCell>
             <TableCell className="flex justify-end">
               <Skeleton className="h-5 w-[140px]" />
             </TableCell>
@@ -64,13 +70,13 @@ export function OrderDetailsSkeleton() {
                   <Skeleton className="h-5 w-[140px]" />
                 </TableCell>
                 <TableCell className="text-right">
-                  <Skeleton className="h-5 w-3 ml-auto" />
+                  <Skeleton className="ml-auto h-5 w-3" />
                 </TableCell>
                 <TableCell className="text-right">
-                  <Skeleton className="h-5 w-12 ml-auto" />
+                  <Skeleton className="ml-auto h-5 w-12" />
                 </TableCell>
                 <TableCell className="text-right">
-                  <Skeleton className="h-5 w-12 ml-auto" />
+                  <Skeleton className="ml-auto h-5 w-12" />
                 </TableCell>
               </TableRow>
             )

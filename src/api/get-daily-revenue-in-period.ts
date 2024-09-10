@@ -10,7 +10,10 @@ export type GetDailyRevenueInPeriodResponse = {
   receipt: number
 }[]
 
-export async function getDailyRevenueInPeriod({ from, to }: GetDailyRevenueInPeriodQuery) {
+export async function getDailyRevenueInPeriod({
+  from,
+  to,
+}: GetDailyRevenueInPeriodQuery) {
   const response = await api.get<GetDailyRevenueInPeriodResponse>(
     '/metrics/daily-receipt-in-period',
     {
@@ -18,7 +21,7 @@ export async function getDailyRevenueInPeriod({ from, to }: GetDailyRevenueInPer
         from: from?.toISOString(),
         to: to?.toISOString(),
       },
-    }
+    },
   )
 
   return response.data

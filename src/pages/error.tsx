@@ -1,6 +1,4 @@
 import { Frown } from 'lucide-react'
-
-
 import { Link, useRouteError } from 'react-router-dom'
 
 export function Error() {
@@ -23,5 +21,3 @@ export function Error() {
     </div>
   )
 }
-
-

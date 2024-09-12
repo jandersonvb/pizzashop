@@ -46,7 +46,6 @@ describe('Pagination', () => {
   it('should be able navigate to the previous page', async () => {
     const user = userEvent.setup()
 
-
     const wrapper = render(
       <Pagination
         pageIndex={5}

@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+
 import { OrderStatus } from './order-status'
 
 describe('Order Status', () => {
@@ -8,7 +9,6 @@ describe('Order Status', () => {
     const statusText = wrapper.getByText('Pendente') // Get the text element based on the status
 
     const badgeElement = wrapper.getByTestId('badge') // Get the badge element
-
 
     expect(statusText).toBeInTheDocument() // Check if the text is in the document
     expect(badgeElement).toHaveClass('bg-slate-400') // Check if the badge has the right class
@@ -46,8 +46,6 @@ describe('Order Status', () => {
     expect(statusText).toBeInTheDocument()
     expect(badgeElement).toHaveClass('bg-amber-500')
   })
-
-
 
   it('should display the right text when order status is processing', () => {
     const wrapper = render(<OrderStatus status="processing" />)

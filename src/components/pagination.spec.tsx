@@ -1,6 +1,7 @@
-import { render } from "@testing-library/react"
-import { Pagination } from "./pagination"
-import userEvent from "@testing-library/user-event"
+import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+import { Pagination } from './pagination'
 
 const onPageChangeCallback = vi.fn() // This is mocked function (Spy)
 
@@ -15,7 +16,8 @@ describe('Pagination', () => {
         pageIndex={0}
         perPage={10}
         totalCount={200}
-        onPageChange={onPageChangeCallback} />
+        onPageChange={onPageChangeCallback}
+      />,
     )
 
     const totalPage = wrapper.getByText('Página 1 de 20')
@@ -33,10 +35,13 @@ describe('Pagination', () => {
         pageIndex={0}
         perPage={10}
         totalCount={200}
-        onPageChange={onPageChangeCallback} />
+        onPageChange={onPageChangeCallback}
+      />,
     )
 
-    const nextPageButton = wrapper.getByRole('button', { name: 'Próxima página' })
+    const nextPageButton = wrapper.getByRole('button', {
+      name: 'Próxima página',
+    })
 
     await user.click(nextPageButton) // This will trigger the click event
 
@@ -51,10 +56,13 @@ describe('Pagination', () => {
         pageIndex={5}
         perPage={10}
         totalCount={200}
-        onPageChange={onPageChangeCallback} />
+        onPageChange={onPageChangeCallback}
+      />,
     )
 
-    const previousPageButton = wrapper.getByRole('button', { name: 'Página anterior' })
+    const previousPageButton = wrapper.getByRole('button', {
+      name: 'Página anterior',
+    })
 
     await user.click(previousPageButton) // This will trigger the click event
 
@@ -69,10 +77,13 @@ describe('Pagination', () => {
         pageIndex={5}
         perPage={10}
         totalCount={200}
-        onPageChange={onPageChangeCallback} />
+        onPageChange={onPageChangeCallback}
+      />,
     )
 
-    const firstPageButton = wrapper.getByRole('button', { name: 'Primeira página' })
+    const firstPageButton = wrapper.getByRole('button', {
+      name: 'Primeira página',
+    })
 
     await user.click(firstPageButton) // This will trigger the click event
 
@@ -87,10 +98,13 @@ describe('Pagination', () => {
         pageIndex={0}
         perPage={10}
         totalCount={200}
-        onPageChange={onPageChangeCallback} />
+        onPageChange={onPageChangeCallback}
+      />,
     )
 
-    const lastPageButton = wrapper.getByRole('button', { name: 'Última página' })
+    const lastPageButton = wrapper.getByRole('button', {
+      name: 'Última página',
+    })
 
     await user.click(lastPageButton) // This will trigger the click event
 

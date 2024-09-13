@@ -1,10 +1,12 @@
 import { env } from '@/env'
 import { setupWorker } from 'msw/browser'
 import { signInMock } from './sign-in-mock'
+import { registerRestaurantMock } from './register-restaurant-mock'
 
 // Import and use the mocks here
 export const worker = setupWorker(
   signInMock,
+  registerRestaurantMock
 )
 
 export async function enableMSW() {

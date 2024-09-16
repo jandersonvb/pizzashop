@@ -15,6 +15,8 @@ import { registerRestaurantMock } from './register-restaurant-mock'
 import { getProfileMock } from './get-profile-mock'
 import { getManagedRestaurantMock } from './get-managed-restaurant-mock'
 import { updateProfileMock } from './update-profile-mock'
+import { getOrdersMock } from './get-orders-mock'
+import { getOrderDetailsMock } from './get-order-details-mock'
 
 // Import and use the mocks here
 export const worker = setupWorker(
@@ -28,7 +30,9 @@ export const worker = setupWorker(
   registerRestaurantMock,
   getProfileMock,
   getManagedRestaurantMock,
-  updateProfileMock
+  updateProfileMock,
+  getOrdersMock,
+  getOrderDetailsMock
 
 )
 

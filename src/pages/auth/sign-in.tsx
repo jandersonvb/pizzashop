@@ -54,7 +54,7 @@ export function SignIn() {
       <Helmet title="Login" />
       <div className="p-8">
         <Button asChild className="absolute right-8 top-8" variant="ghost">
-          <Link to="/sign-up">Criar conta</Link>
+          <Link to="/sign-up">Novo estabelecimento</Link>
         </Button>
         <div className="flex w-[350px] flex-col gap-6">
           <div className="flex items-center justify-center">
@@ -74,7 +74,7 @@ export function SignIn() {
               <Input
                 id="email"
                 type="email"
-                placeholder="Digite seu e-mail"
+                // placeholder="Digite seu e-mail"
                 {...register('email')}
               />
             </div>

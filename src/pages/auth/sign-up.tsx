@@ -78,7 +78,6 @@ export function SignUp() {
               <Input
                 id="restaurantName"
                 type="text"
-                placeholder="Digite o nome do estabelecimento"
                 {...register('restaurantName')}
               />
             </div>

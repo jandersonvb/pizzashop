@@ -87,7 +87,6 @@ export function SignUp() {
               <Input
                 id="managerName"
                 type="text"
-                placeholder="Digite o nome do gerente"
                 {...register('managerName')}
               />
             </div>
@@ -97,7 +96,6 @@ export function SignUp() {
               <Input
                 id="email"
                 type="email"
-                placeholder="Digite seu e-mail"
                 {...register('email')}
               />
             </div>
@@ -107,7 +105,6 @@ export function SignUp() {
               <Input
                 id="phone"
                 type="tel"
-                placeholder="Digite seu celular"
                 {...register('phone')}
               />
             </div>
